@@ -1,7 +1,14 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Tab1.css';
-import { repositoryList } from '../interfaces/Repository';
-import RepoItem from '../components/RepoItem';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonList
+} from "@ionic/react";
+import "./Tab1.css";
+import { repositoryList } from "../interfaces/Repository";
+import RepoItem from "../components/RepoItem";
 
 const Tab1: React.FC = () => {
   return (
@@ -15,19 +22,18 @@ const Tab1: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
-
           {/*iOS */}
           <IonToolbar>
             <IonTitle size="large">Repositorios</IonTitle>
           </IonToolbar>
         </IonHeader>
 
-
-        {repositoryList.map((repo) => (
-          <RepoItem {...repo}/>
-        ))}
-
-
+        <IonList>
+          {repositoryList.map((repo) => (
+            <RepoItem {...repo} />
+          ))}
+        </IonList>
+      
       </IonContent>
     </IonPage>
   );
