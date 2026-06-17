@@ -7,11 +7,10 @@ import {
   IonLabel,
   IonThumbnail,
 } from "@ionic/react";
-import "./RepoItem.tsx";
+import "./RepoItem.css";
 import React from "react";
 import { pencil, trash } from "ionicons/icons";
 import { Repository } from "../interfaces/Repository.js";
-
 
 const RepoItem: React.FC<Repository> = (repository) => {
   return (
@@ -23,10 +22,7 @@ const RepoItem: React.FC<Repository> = (repository) => {
         <IonLabel>
           <h3>{repository.name}</h3>
           <p>{repository.description}</p>
-          <p>
-            <strong>Lenguaje: </strong>
-            {repository.language}
-          </p>
+          <span className="repo-language">{repository.language}</span>
         </IonLabel>
       </IonItem>
       <IonItemOptions>

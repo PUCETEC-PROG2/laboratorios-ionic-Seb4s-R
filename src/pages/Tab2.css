@@ -1,0 +1,55 @@
+.form-container {
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  backdrop-filter: blur(20px);
+}
+
+/* Inputs */
+ion-input,
+ion-textarea {
+  --background: rgba(255,255,255,.12);
+
+  --border-color: rgba(255,255,255,.25);
+
+  --color: white;
+
+  --placeholder-color: rgba(255,255,255,.6);
+
+  border-radius: 22px;
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.08);
+}
+
+/* Labels */
+ion-input::part(label),
+ion-textarea::part(label) {
+  color: white;
+}
+
+/* Botón */
+ion-button {
+  --background:
+    linear-gradient(
+      135deg,
+      #00c6ff,
+      #00f5d4
+    );
+
+  --box-shadow:
+    0 8px 24px rgba(0,198,255,.35);
+
+  height: 52px;
+
+  font-weight: 700;
+
+  font-size: 1rem;
+}

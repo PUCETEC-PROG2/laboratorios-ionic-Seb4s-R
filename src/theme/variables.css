@@ -1,2 +1,102 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+:root {
+  /* Colores principales */
+  --ion-color-primary: #00c6ff;
+  --ion-color-primary-rgb: 0, 198, 255;
+
+  --ion-color-secondary: #00f5d4;
+  --ion-color-secondary-rgb: 0, 245, 212;
+
+  /* Fondo App */
+  --app-gradient:
+    linear-gradient(
+      135deg,
+      #0f172a 0%,
+      #0ea5e9 40%,
+      #06b6d4 70%,
+      #2dd4bf 100%
+    );
+
+  /* Glass */
+  --glass-bg: rgba(255,255,255,0.15);
+  --glass-border: rgba(255,255,255,0.25);
+  --glass-shadow:
+    0 8px 32px rgba(0,0,0,0.15);
+
+  --glass-blur: blur(20px);
+
+  /* Texto */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,.75);
+
+  --radius-xl: 28px;
+}
+
+body {
+  background: var(--app-gradient);
+}
+
+ion-content {
+  --background: var(--app-gradient);
+}
+
+/* Toolbar estilo iOS */
+ion-toolbar {
+  --background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+ion-title {
+  font-weight: 700;
+  color: white;
+}
+
+/* Lista transparente */
+ion-list {
+  background: transparent;
+}
+
+ion-content::part(background) {
+  position: relative;
+}
+
+ion-content::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  background: rgba(255,255,255,.12);
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  top: -100px;
+  right: -80px;
+
+  pointer-events: none;
+}
+
+ion-content::after {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  background: rgba(0,255,255,.15);
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  bottom: -50px;
+  left: -50px;
+
+  pointer-events: none;
+}
