@@ -1,23 +1,45 @@
+/* Glassmorphism variables and tweaks (fallbacks if not set elsewhere) */
+:root {
+  --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.42));
+  --glass-border: rgba(255,255,255,0.45);
+  --glass-blur: blur(10px);
+  --glass-shadow: 0 10px 30px rgba(10, 30, 47, 0.12);
+  --radius-xl: 18px;
+}
+
+/* ion-item (card) using glassmorphism */
 ion-item {
-  --background: rgba(255,255,255,.12);
+  --background: var(--glass-bg);
   --border-color: transparent;
 
-  backdrop-filter: blur(20px);
+  backdrop-filter: var(--glass-blur) saturate(140%);
 
-  border: 1px solid rgba(255,255,255,.18);
+  border: 1px solid var(--glass-border);
 
-  border-radius: 24px;
+  border-radius: var(--radius-xl);
 
   margin-bottom: 14px;
 
-  box-shadow:
-    0 8px 32px rgba(0,0,0,.12);
+  box-shadow: var(--glass-shadow);
 
   transition: all .25s ease;
+
+  background-clip: padding-box;
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* Make sure inner/native parts don't force a white background (Ionic shadow parts and common classes) */
+ion-item::part(native),
+ion-item .item-native,
+ion-item .item-inner,
+ion-item .item-content {
+  background: transparent !important;
 }
 
 ion-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 ion-thumbnail {
@@ -30,13 +52,14 @@ ion-thumbnail img {
 }
 
 ion-label h3 {
-  color: white;
+  color: var(--text-primary);
   font-weight: 700;
   font-size: 1rem;
 }
 
 ion-label p {
-  color: rgba(255,255,255,.75);
+  color: var(--text-secondary);
+  margin-top: 6px;
 }
 
 .repo-language {
@@ -48,9 +71,9 @@ ion-label p {
 
   border-radius: 999px;
 
-  background: rgba(255,255,255,.15);
+  background: rgba(255,255,255,0.06);
 
-  color: white;
+  color: black;
 
   font-size: .75rem;
 
@@ -59,4 +82,34 @@ ion-label p {
 
 ion-item-option {
   border-radius: 20px;
+}
+
+/* Force background transparency on lists and content so the page background shows through */
+ion-list,
+.list,
+.list-md,
+ion-content,
+ion-app {
+  background: transparent !important;
+}
+
+/* Some Ionic parts expose native backgrounds — force them transparent */
+ion-list::part(native),
+ion-content::part(native),
+ion-item::part(native) {
+  background: transparent !important;
+}
+
+/* Ensure nested elements don't show a white panel */
+ion-item .item-inner,
+ion-item .item-content,
+ion-item .item-native {
+  background: transparent !important;
+}
+
+/* Fallback for platform-specific list classes */
+.list-md .list-md-virtual,
+.ion-page,
+.page-root {
+  background: transparent !important;
 }

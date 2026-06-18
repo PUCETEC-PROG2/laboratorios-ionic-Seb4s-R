@@ -17,12 +17,14 @@ const RepoItem: React.FC<Repository> = (repository) => {
     <IonItemSliding>
       <IonItem>
         <IonThumbnail slot="start">
-          <img src={repository.avatarUrl} alt={repository.name} />
+          <img src={repository.owner.avatar_url} alt={repository.name} />
         </IonThumbnail>
         <IonLabel>
           <h3>{repository.name}</h3>
           <p>{repository.description}</p>
-          <span className="repo-language">{repository.language}</span>
+          {repository.language !== null && repository.language !== "" && (
+            <span className="repo-language">{repository.language}</span>
+          )}
         </IonLabel>
       </IonItem>
       <IonItemOptions>

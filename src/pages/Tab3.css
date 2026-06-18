@@ -9,16 +9,15 @@
   width: 100%;
   max-width: 420px;
 
-  background: rgba(255,255,255,.15);
+  background: var(--glass-bg);
 
-  backdrop-filter: blur(30px);
+  backdrop-filter: var(--glass-blur);
 
-  border: 1px solid rgba(255,255,255,.25);
+  border: 1px solid var(--glass-border);
 
-  border-radius: 32px;
+  border-radius: var(--radius-xl);
 
-  box-shadow:
-    0 8px 32px rgba(0,0,0,.15);
+  box-shadow: var(--glass-shadow);
 
   overflow: hidden;
 
@@ -52,7 +51,7 @@
 }
 
 .card ion-card-title {
-  color: white;
+  color: var(--text-primary);
 
   font-size: 1.7rem;
 
@@ -60,7 +59,7 @@
 }
 
 .card ion-card-subtitle {
-  color: rgba(255,255,255,.75);
+  color: var(--text-secondary);
 
   font-size: 1rem;
 }

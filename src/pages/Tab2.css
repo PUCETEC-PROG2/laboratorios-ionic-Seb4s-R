@@ -4,6 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
 }
 
 .form-field {
@@ -13,26 +19,26 @@
 /* Inputs */
 ion-input,
 ion-textarea {
-  --background: rgba(255,255,255,.12);
+  --background: rgba(255,255,255,.06);
 
-  --border-color: rgba(255,255,255,.25);
+  --border-color: rgba(255,255,255,.18);
 
-  --color: white;
+  --color: var(--text-primary);
 
   --placeholder-color: rgba(255,255,255,.6);
 
   border-radius: 22px;
 
-  backdrop-filter: blur(20px);
+  backdrop-filter: var(--glass-blur);
 
   box-shadow:
-    0 8px 24px rgba(0,0,0,.08);
+    0 8px 24px rgba(0,0,0,.06);
 }
 
 /* Labels */
 ion-input::part(label),
 ion-textarea::part(label) {
-  color: white;
+  color: var(--text-primary);
 }
 
 /* Botón */
@@ -40,12 +46,12 @@ ion-button {
   --background:
     linear-gradient(
       135deg,
-      #00c6ff,
-      #00f5d4
+      var(--ion-color-primary),
+      var(--ion-color-secondary)
     );
 
   --box-shadow:
-    0 8px 24px rgba(0,198,255,.35);
+    0 8px 24px rgba(0,198,255,.18);
 
   height: 52px;
 

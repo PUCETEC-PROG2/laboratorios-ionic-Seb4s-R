@@ -6,3 +6,9 @@ ion-list {
   padding: 16px;
   background: transparent;
 }
+
+/* Glass container para listas */
+.list-glass {
+  --background: transparent;
+  padding: 12px;
+}
