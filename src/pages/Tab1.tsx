@@ -1,5 +1,14 @@
 import React from "react";
-import { IonContent, IonHeader,IonPage, IonTitle, IonToolbar, IonList, useIonViewWillEnter, IonText} from "@ionic/react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonList,
+  useIonViewWillEnter,
+  IonText,
+} from "@ionic/react";
 // import { repositoryList } from "../interfaces/Repository";
 import RepoItem from "../components/RepoItem";
 import { Repository } from "../interfaces/Repository";
@@ -10,14 +19,15 @@ import LoadingSpinner from "../components/LoadingSpinner";
 const Tab1: React.FC = () => {
   const [repositoryList, setRepositoryList] = React.useState<Repository[]>([]);
   const [loading, setLoading] = React.useState(false);
-  
+  const [errorMsg, setErrorMsg] = React.useState("");
+
   const loadRepos = async () => {
     setLoading(true);
-    const reposData = await fetchRepositories();
-    setRepositoryList(reposData);
-    setLoading(false);
+    fetchRepositories()
+      .then((reposData) => setRepositoryList(reposData))
+      .catch((error) => setErrorMsg("Error al cargar repositorios. " + error))
+      .finally(() => setLoading(false));
   };
-
 
   // Cargar los repositorios cada vez que se entra a la vista
   useIonViewWillEnter(() => {
@@ -33,7 +43,7 @@ const Tab1: React.FC = () => {
           <IonTitle>Repositorios</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen className="ion-padding">
         <IonHeader collapse="condense">
           {/*iOS */}
           <IonToolbar>
@@ -47,11 +57,11 @@ const Tab1: React.FC = () => {
           ))}
         </IonList>
         {loading && <LoadingSpinner />}
-        {!loading && repositoryList.length === 0 && 
+        {errorMsg !== "" && (
           <IonText color="danger">
-            No se pudieron cargar los repositorios. <br /> Por favor, verifica tu conexión a Internet o tus credenciales de GitHub.
+            <p>{errorMsg} </p>
           </IonText>
-        }
+        )}
       </IonContent>
     </IonPage>
   );
