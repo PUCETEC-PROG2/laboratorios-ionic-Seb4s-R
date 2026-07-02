@@ -80,11 +80,60 @@ ion-label p {
   font-weight: 600;
 }
 
-ion-item-option {
-  border-radius: 20px;
+/* Estilo de glassmorphism para los botones de opciones deslizables */
+ion-item-options {
+  background: transparent !important;
+  border: none !important;
+  margin-bottom: 14px; /* Coincide con el margen del ion-item para que los elementos se alineen horizontalmente */
 }
 
-/* Force background transparency on lists and content so the page background shows through */
+/* Estilo base de cristal para cada botón de opción deslizable */
+ion-item-option {
+  backdrop-filter: var(--glass-blur, blur(10px)) !important;
+  -webkit-backdrop-filter: var(--glass-blur, blur(10px)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: var(--radius-xl, 18px) !important;
+  box-shadow: var(--glass-shadow) !important;
+  margin: 6px 4px !important; /* Margen para centrar el botón verticalmente y separarlo del contorno */
+  height: calc(100% - 12px) !important; /* Calcula la altura para que encaje perfectamente con el ion-item */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+}
+
+/* Eliminar fondos opacos inyectados nativamente por el Shadow DOM de Ionic */
+ion-item-option::part(native) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+/* Botón de Editar (Cian/Verde Cristal basado en el color secundario de variables.css) */
+.edit-option {
+  --background: rgba(0, 245, 139, 0.501) !important; /* Fondo verde translúcido */
+  --color: #ffffff !important; /* Ícono en color cian brillante */
+  border-color: rgba(0, 245, 212, 0.35) !important;
+}
+
+.edit-option:hover {
+  --background: rgba(0, 245, 106, 0.6) !important;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Botón de Borrar (Danger / Rojo Cristal) */
+.delete-option {
+  --background: rgba(229, 22, 49, 0.5) !important; /* Fondo rojo peligro translúcido */
+  --color: #ffffff !important; /* Ícono rojo brillante */
+  border-color: rgba(235, 68, 90, 0.35) !important;
+}
+
+.delete-option:hover {
+  --background: rgba(255, 0, 34, 0.708) !important;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Forzar transparencia de fondos en la lista */
 ion-list,
 .list,
 .list-md,
@@ -93,21 +142,19 @@ ion-app {
   background: transparent !important;
 }
 
-/* Some Ionic parts expose native backgrounds — force them transparent */
+/* Asegurar que las partes nativas de los contenedores permanezcan transparentes */
 ion-list::part(native),
 ion-content::part(native),
 ion-item::part(native) {
   background: transparent !important;
 }
 
-/* Ensure nested elements don't show a white panel */
 ion-item .item-inner,
 ion-item .item-content,
 ion-item .item-native {
   background: transparent !important;
 }
 
-/* Fallback for platform-specific list classes */
 .list-md .list-md-virtual,
 .ion-page,
 .page-root {

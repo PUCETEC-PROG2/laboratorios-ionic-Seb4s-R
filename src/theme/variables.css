@@ -100,3 +100,99 @@ ion-content::after {
 
   pointer-events: none;
 }
+
+/* ==========================================================================
+   Estilos Globales para Overlays de Ionic (Alerts, Modales, etc.)
+   Debe definirse aquí para que afecte a elementos fuera de la página principal.
+   ========================================================================== */
+
+/* Estilos globales con especificidad incrementada para el modal de confirmación de eliminación (con estilo glassmorphism) */
+ion-alert.custom-delete-alert {
+  --background: rgba(15, 23, 42, 0.65) !important; /* Fondo oscuro translúcido inyectado directamente en el Shadow DOM */
+  --backdrop-opacity: 0.7;
+}
+
+/* Caja contenedora del diálogo (wrapper) con efecto glassmorphism */
+ion-alert.custom-delete-alert .alert-wrapper {
+  border-radius: 20px !important;
+  backdrop-filter: var(--glass-blur, blur(20px)) !important;
+  -webkit-backdrop-filter: var(--glass-blur, blur(20px)) !important;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.25)) !important;
+  background: rgba(1, 56, 255, 0.1) !important; /* Anula el fondo del wrapper nativo para que actúe el desenfoque */
+}
+
+/* Encabezado del diálogo */
+ion-alert.custom-delete-alert .alert-head {
+  padding-top: 24px;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+/* Título principal de la alerta (rojo peligro destacado) */
+ion-alert.custom-delete-alert .alert-title {
+  color: var(--ion-color-danger, #eb445a) !important;
+  font-weight: 700 !important;
+  font-size: 21px !important;
+  letter-spacing: -0.5px;
+}
+
+/* Mensaje explicativo del diálogo adaptado con el texto primario del usuario */
+ion-alert.custom-delete-alert .alert-message {
+  padding: 8px 24px 16px;
+  text-align: center;
+  color: var(--text-primary, #ffffff) !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+/* Grupo de botones del diálogo en fila */
+ion-alert.custom-delete-alert .alert-button-group {
+  padding: 0 16px 20px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+/* Forzar centrado del botón y su alineación interna */
+ion-alert.custom-delete-alert .alert-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Centrar el contenido y el texto interno inyectado por Ionic dentro del botón (soluciona desalineado en Android) */
+ion-alert.custom-delete-alert .alert-button .alert-button-inner {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Botón de Cancelar adaptado al glass */
+ion-alert.custom-delete-alert .alert-button-cancel {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary, #ffffff) !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  flex: 1 !important;
+  text-transform: none !important;
+  font-size: 15px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  height: 44px !important;
+}
+
+/* Botón de Confirmar (Eliminación) en color rojo peligro con sombra */
+ion-alert.custom-delete-alert .alert-button-confirm {
+  background: var(--ion-color-danger, #eb445a) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  flex: 1 !important;
+  text-transform: none !important;
+  font-size: 15px !important;
+  box-shadow: 0 4px 12px rgba(235, 68, 90, 0.4) !important;
+  height: 44px !important;
+}

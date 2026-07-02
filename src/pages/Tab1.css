@@ -7,7 +7,7 @@ ion-list {
   background: transparent;
 }
 
-/* Glass container para listas */
+/* Contenedor con efecto glassmorphism para listas */
 .list-glass {
   --background: transparent;
   padding: 12px;
